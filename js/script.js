@@ -38,9 +38,18 @@ function setup() {
   imageMode(CENTER);
 }
 
-// function draw() {
-
-// }
+function draw() {
+  for (var i = 0; i < NUM; i++) {
+    colr = map(x[i], 0, 500, 50, 150);
+    colb = map(y[i], 0, 500, 50, 150);
+    fill(colr, random(200, 250), colb, 50);
+    noStroke();
+    ellipse(x[i], y[i], r[i]);
+    x[i] = x[i] + random(10);
+    y[i] = y[i] + random(-5, 5);
+  }
+  image(img, width / 2, height / 2);
+}
 
 // shaken
 function deviceShaken() {
