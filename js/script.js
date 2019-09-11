@@ -38,13 +38,7 @@ function setup() {
 }
 
 function draw() {
-  background(shakes);
 
-  // mouse move
-  if (mouseIsPressed) {
-    fill(255);
-    ellipse(mouseX, mouseY, 50, 50);
-  }
 
 }
 
