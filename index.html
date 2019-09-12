@@ -1,19 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <!-- stop scroll problem -->
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1，viewport-fit=cover" />
-  <link rel="stylesheet" href="./style.css">
-  <!-- doesn't show url -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- stop scroll problem -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1，viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- doesn't show url -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- // stop scroll horizonall direction -->
+    <script>
+      window.addEventListener(
+        "touchstart",
+        function(event) {
+          event.preventDefault();
+        },
+        { passive: false }
+      );
+      window.addEventListener(
+        "touchmove",
+        function(event) {
+          event.preventDefault();
+        },
+        { passive: false }
+      );
+    </script>
 
-  <title>P5 interactive</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <title>P5 interactive</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
 
-  <!-- main code -->
-  <script src="js/script.js"></script>
-</head>
-<body>
-</body>
+    <!-- main code -->
+    <script src="js/script.js"></script>
+  </head>
+  <body></body>
 </html>

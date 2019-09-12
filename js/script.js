@@ -1,92 +1,92 @@
-// shake
+// shake count
 var shakes = 0;
 
 // helloworld
 var img;
-var NUM = 600;
-var x = [];
-var y = [];
+var pos = [];
 var r = [];
-var colr;
-var colb;
 
 // sparkling
 var sparklings = [];
 
-
+// load source
 function preload() {
   img = loadImage('helloworld.png');
 }
 
 function setup() {
-  // stop scroll horizonall direction
-  window.addEventListener("touchstart", function (event) {
-    event.preventDefault();
-  }, {
-    passive: false
-  });
-  window.addEventListener("touchmove", function (event) {
-    event.preventDefault();
-  }, {
-    passive: false
-  });
 
   createCanvas(windowWidth, windowHeight);
 
-  // prepare to background
-  frameRate(60);
+  // prepare circle settings
   background(0);
-  for (var i = 0; i < NUM; i++) {
-    x[i] = 0;
-    y[i] = random(height / 2 - 200, height / 2 + 200);
+  for (var i = 0; i < 600; i++) {
+    pos = createVector(0, random(height / 2 - 200, height / 2 + 200));
     r[i] = random(10, 30);
   }
+
   imageMode(CENTER);
+  frameRate(10);
 }
 
 function draw() {
+
+}
+
+// shaken
+function deviceShaken() {
+  // shake count
+  shakes++;
+
+
   // hello world
   if (shakes < 100) {
 
-    for (var i = 0; i < NUM; i++) {
-      colr = map(x[i], 0, 500, 50, 150);
-      colb = map(y[i], 0, 500, 50, 150);
+    for (var i = 0; i < 600; i++) {
+      // decide color
+      var colr = map(pos[i].x, 0, 500, 50, 150);
+      var colb = map(pos[i].y, 0, 500, 50, 150);
+
+      // fill
       fill(colr, random(200, 250), colb, 50);
       noStroke();
       ellipse(x[i], y[i], r[i]);
-      x[i] = x[i] + random(10);
-      y[i] = y[i] + random(-5, 5);
-    }
-    image(img, width / 2, height / 2);
 
+      // refresh
+      pos[i].x = pos[i].x + random(10);
+      pos[i].y = pos[i].y + random(-5, 5);
+    }
+
+    // image on the top (image is transparent)
+    image(img, width / 2, height / 2);
   }
+
+
   // sparkling
   else if (shakes < 200) {
+    // settings
+    frameRate(60);
     background(255);
-    blendMode(OF_BLENDMODE_MULTIPLY);
+    blendMode(MULTIPLY);
 
+    // create new sparklings
+    var pos = createVector(random(width), random(height));
+    for (var i = 0; i < 30; i++) {
+      sparklings.push(new Sparkling(pos));
+    }
+
+    // show or delete sparklings
     for (var i = 0; i < sparklings.length; i++) {
 
       fill(random(50, 150), 240, 230);
+
       if (sparklings[i].lifetime < 0) {
         sparklings.splice(i, 1);
       } else {
         sparklings[i].draw();
         sparklings[i].move();
       }
-    }
 
-  }
-}
-
-// shaken
-function deviceShaken() {
-  shakes++;
-
-  if (shakes > 100) {
-    var pos = createVector(random(width), random(height));
-    for (var i = 0; i < 30; i++) {
-      sparklings.push(new Sparkling(pos));
     }
   }
 }
