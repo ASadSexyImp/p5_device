@@ -79,6 +79,7 @@ function deviceShaken() {
     for (var i = 0; i < sparklings.length; i++) {
 
       fill(random(50, 150), 240, 230);
+      stroke(random(50, 150), 240, 230);
 
       if (sparklings[i].lifetime < 0) {
         sparklings.splice(i, 1);
