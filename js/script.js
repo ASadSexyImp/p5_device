@@ -1,10 +1,12 @@
 // shake count
 var shakes = 0;
+var mode = "";
 
 // helloworld
 var img;
 var pos = [];
 var r = [];
+var isShake = false;
 
 // sparkling
 var sparklings = [];
@@ -31,17 +33,7 @@ function setup() {
 
 function draw() {
 
-}
-
-// shaken
-function deviceShaken() {
-  // shake count
-  shakes++;
-
-
-  // hello world
-  if (shakes < 500) {
-
+  if (mode == "helloworld" && isShake) {
     for (var i = 0; i < 600; i++) {
       // decide color
       var colr = map(pos[i].x, 0, 500, 50, 150);
@@ -59,11 +51,41 @@ function deviceShaken() {
 
     // image on the top (image is transparent)
     image(img, width / 2, height / 2);
+
+    // reset status
+    isShake = false
+
+  } else if (mode == "sparkling") {
+    // show or delete sparklings
+    for (var i = 0; i < sparklings.length; i++) {
+
+      fill(random(50, 150), 240, 230);
+
+      if (sparklings[i].lifetime < 0) {
+        sparklings.splice(i, 1);
+      } else {
+        sparklings[i].draw();
+        sparklings[i].move();
+      }
+
+    }
   }
+}
 
+// shaken
+function deviceShaken() {
+  // shake count
+  shakes++;
+  // device is shaken
+  isShake = true;
 
+  // hello world
+  if (shakes < 500) {
+    mode = "helloworld";
+  }
   // sparkling
   else if (shakes < 1000) {
+    mode = "sparkling";
     // settings
     frameRate(60);
     background(255);
@@ -75,20 +97,6 @@ function deviceShaken() {
       sparklings.push(new Sparkling(pos));
     }
 
-    // show or delete sparklings
-    for (var i = 0; i < sparklings.length; i++) {
-
-      fill(random(50, 150), 240, 230);
-      stroke(random(50, 150), 240, 230);
-
-      if (sparklings[i].lifetime < 0) {
-        sparklings.splice(i, 1);
-      } else {
-        sparklings[i].draw();
-        sparklings[i].move();
-      }
-
-    }
   }
 }
 
