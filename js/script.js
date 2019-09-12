@@ -40,7 +40,7 @@ function deviceShaken() {
 
 
   // hello world
-  if (shakes < 100) {
+  if (shakes < 500) {
 
     for (var i = 0; i < 600; i++) {
       // decide color
@@ -63,7 +63,7 @@ function deviceShaken() {
 
 
   // sparkling
-  else if (shakes < 200) {
+  else if (shakes < 1000) {
     // settings
     frameRate(60);
     background(255);
