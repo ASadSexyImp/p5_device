@@ -117,11 +117,11 @@ function deviceShaken() {
   text(shakes, width / 2, height / 2);
   text(mode, width / 2, height / 2 + 200);
   // hello world
-  if (shakes < 250) {
+  if (shakes < 500) {
     mode = "helloworld";
   }
   // sparkling
-  else if (shakes < 500) {
+  else if (shakes < 1000) {
     mode = "sparkling";
     // settings
     frameRate(60);
@@ -134,7 +134,7 @@ function deviceShaken() {
 
   }
   // hologram
-  else if (shakes < 750) {
+  else if (shakes < 1500) {
     mode = "hologram"
     createCanvas(windth, height, webGL);
     x += accelerationX * 0.01;
@@ -147,6 +147,7 @@ function deviceShaken() {
     background(20, 20, 45);
     box(200);
   }
+  draw();
 }
 
 class Sparkling {
