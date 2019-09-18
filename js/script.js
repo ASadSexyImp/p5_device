@@ -40,8 +40,6 @@ function draw() {
 
 
   if (mode == "helloworld" && isShake) {
-    background(128);
-    fill(255);
     text(shakes, width / 2, height / 2);
     for (var i = 0; i < 600; i++) {
       // decide color
