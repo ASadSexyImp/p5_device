@@ -38,6 +38,7 @@ function setup() {
 
 function draw() {
 
+  background(255);
   if (mode == "helloworld" && isShake) {
     background(255);
 
