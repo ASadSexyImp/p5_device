@@ -57,14 +57,10 @@ function draw() {
     // image on the top (image is transparent)
     image(img, width / 2, height / 2);
 
-    // reset status
-    isShake = false
-
   } else if (mode == "sparkling") {
+    background(255);
     // show or delete sparklings
     for (var i = 0; i < sparklings.length; i++) {
-
-      fill(random(50, 150), 240, 230);
 
       if (sparklings[i].lifetime < 0) {
         sparklings.splice(i, 1);
@@ -79,6 +75,9 @@ function draw() {
     translate(width / 2, 0, -600);
     fill(99, 170, 159, 10);
   }
+
+  // reset status
+  isShake = false
 }
 
 // shaken
@@ -97,12 +96,10 @@ function deviceShaken() {
     mode = "sparkling";
     // settings
     frameRate(60);
-    background(255);
-    blendMode(MULTIPLY);
 
     // create new sparklings
     var pos = createVector(random(width), random(height));
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 15; i++) {
       sparklings.push(new Sparkling(pos));
     }
 
@@ -132,7 +129,7 @@ class Sparkling {
     // 花火本体の位置で初期化
     this.position = createVector(pos.x, pos.y);
     // 飛び散る向きをランダムに決める
-    this.velocity = createVector(ofRandom(-3, 3), ofRandom(-3, 3)); // 速度
+    this.velocity = createVector(random(-3, 3), random(-3, 3)); // 速度
 
     this.radius = random(5, 20);
     // 花火の粒が表示される時間をランダムに決める
@@ -152,6 +149,7 @@ class Sparkling {
   // 表示
   draw() {
     // 小さな円を描く
-    ellipse(this.position.x, this.position.y, 2);
+    fill(random(50, 150), 240, 230);
+    ellipse(this.position.x, this.position.y, this.radius);
   }
 }
