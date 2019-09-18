@@ -57,6 +57,9 @@ function draw() {
     // image on the top (image is transparent)
     image(img, width / 2, height / 2);
 
+    // reset status
+    isShake = false
+
   } else if (mode == "sparkling") {
     background(255);
     // show or delete sparklings
@@ -76,8 +79,7 @@ function draw() {
     fill(99, 170, 159, 10);
   }
 
-  // reset status
-  isShake = false
+
 }
 
 // shaken
