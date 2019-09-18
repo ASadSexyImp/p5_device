@@ -39,6 +39,8 @@ function setup() {
 function draw() {
 
   if (mode == "helloworld" && isShake) {
+    background(255);
+
     for (var i = 0; i < 600; i++) {
       // decide color
       var colr = map(pos[i].x, 0, 500, 50, 150);
