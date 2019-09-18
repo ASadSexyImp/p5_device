@@ -11,6 +11,11 @@ var isShake = false;
 // sparkling
 var sparklings = [];
 
+// hologram
+var x;
+var y;
+var z;
+
 // load source
 function preload() {
   img = loadImage('helloworld.png');
@@ -69,6 +74,10 @@ function draw() {
       }
 
     }
+  } else if (mode == "hologram") {
+    background(0);
+    translate(width / 2, 0, -600);
+    fill(99, 170, 159, 10);
   }
 }
 
@@ -97,6 +106,23 @@ function deviceShaken() {
       sparklings.push(new Sparkling(pos));
     }
 
+  }
+  // hologram
+  else if (shakes < 1500) {
+    mode = "hologram"
+    createCanvas(windth, height, webGL);
+    x += accelerationX * 0.05;
+    y += accelerationY * 0.05;
+    z += accelerationZ * 0.05;
+
+    rotateX(x);
+    rotateY(y);
+    rotateZ(z);
+
+    noFill();
+
+    stroke(99, 170, 159);
+    box(200);
   }
 }
 
