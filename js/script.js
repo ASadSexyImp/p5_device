@@ -112,6 +112,7 @@ function deviceShaken() {
   shakes++;
   // device is shaken
   isShake = true;
+  background(0);
   fill(255);
   text(shakes, width / 2, height / 2);
 
