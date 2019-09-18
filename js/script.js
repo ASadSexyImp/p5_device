@@ -90,11 +90,11 @@ function deviceShaken() {
   isShake = true;
 
   // hello world
-  if (shakes < 500) {
+  if (shakes < 250) {
     mode = "helloworld";
   }
   // sparkling
-  else if (shakes < 1000) {
+  else if (shakes < 500) {
     mode = "sparkling";
     // settings
     frameRate(60);
@@ -107,7 +107,7 @@ function deviceShaken() {
 
   }
   // hologram
-  else if (shakes < 1500) {
+  else if (shakes < 750) {
     mode = "hologram"
     createCanvas(windth, height, webGL);
     x += accelerationX * 0.05;
