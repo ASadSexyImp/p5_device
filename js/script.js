@@ -39,8 +39,7 @@ function setup() {
 function draw() {
 
   if (mode == "helloworld" && isShake) {
-    fill(255);
-    text(shakes, width / 2, height / 2);
+
     for (var i = 0; i < 600; i++) {
       // decide color
       var colr = map(pos[i].x, 0, 500, 50, 150);
@@ -113,6 +112,8 @@ function deviceShaken() {
   shakes++;
   // device is shaken
   isShake = true;
+  fill(255);
+  text(shakes, width / 2, height / 2);
 
   // hello world
   if (shakes < 250) {
