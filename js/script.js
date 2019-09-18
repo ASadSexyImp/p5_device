@@ -115,7 +115,7 @@ function deviceShaken() {
   background(0);
   fill(255);
   text(shakes, width / 2, height / 2);
-
+  text(mode, width / 2, height / 2 + 200);
   // hello world
   if (shakes < 250) {
     mode = "helloworld";
