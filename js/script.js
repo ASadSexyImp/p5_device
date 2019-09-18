@@ -12,9 +12,9 @@ var isShake = false;
 var sparklings = [];
 
 // hologram
-var x;
-var y;
-var z;
+var x = 1;
+var y = 1;
+var z = 1;
 
 // load source
 function preload() {
@@ -38,8 +38,8 @@ function setup() {
 
 function draw() {
 
-
   if (mode == "helloworld" && isShake) {
+    fill(255);
     text(shakes, width / 2, height / 2);
     for (var i = 0; i < 600; i++) {
       // decide color
@@ -76,9 +76,32 @@ function draw() {
 
     }
   } else if (mode == "hologram") {
-    background(0);
-    translate(width / 2, 0, -600);
-    fill(99, 170, 159, 10);
+    //draw 3d boxes and sphere
+    push();
+    rotateX(frameCount / 100);
+    rotateY(frameCount / 100);
+    rotateZ(frameCount / 100);
+    box(300);
+    pop();
+    push();
+    rotateX(-frameCount / 50);
+    rotateY(frameCount / 100);
+    rotateZ(frameCount / 100);
+    box(200);
+    pop();
+    push();
+    if (isShake) {
+      scale(x, y, z);
+    } else if (x > 1 && y > 1 && z > 1) {
+      scale(0.999, 0.999, 0.999);
+    }
+    rotateX(-frameCount / 50);
+    rotateY(frameCount / 100);
+    rotateZ(frameCount / 100);
+    box(100);
+    pop();
+
+    isShake = false;
   }
 
 
@@ -112,17 +135,14 @@ function deviceShaken() {
   else if (shakes < 750) {
     mode = "hologram"
     createCanvas(windth, height, webGL);
-    x += accelerationX * 0.05;
-    y += accelerationY * 0.05;
-    z += accelerationZ * 0.05;
-
-    rotateX(x);
-    rotateY(y);
-    rotateZ(z);
+    x += accelerationX * 0.01;
+    y += accelerationY * 0.01;
+    z += accelerationZ * 0.01;
 
     noFill();
 
     stroke(99, 170, 159);
+    background(20, 20, 45);
     box(200);
   }
 }
