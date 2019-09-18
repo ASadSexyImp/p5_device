@@ -38,9 +38,8 @@ function setup() {
 
 function draw() {
 
-  background(255);
+
   if (mode == "helloworld" && isShake) {
-    background(255);
 
     for (var i = 0; i < 600; i++) {
       // decide color
