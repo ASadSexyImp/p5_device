@@ -39,7 +39,7 @@ function setup() {
 function draw() {
 
   if (mode == "helloworld" && isShake) {
-
+    text("aaaaaaaaaaaaa", width / 2, height / 2);
     for (var i = 0; i < 600; i++) {
       // decide color
       var colr = map(pos[i].x, 0, 500, 50, 150);
@@ -112,10 +112,7 @@ function deviceShaken() {
   shakes++;
   // device is shaken
   isShake = true;
-  background(0);
-  fill(255);
-  text(shakes, width / 2, height / 2);
-  text(mode, width / 2, height / 2 + 200);
+
   // hello world
   if (shakes < 500) {
     mode = "helloworld";
@@ -147,7 +144,6 @@ function deviceShaken() {
     background(20, 20, 45);
     box(200);
   }
-  draw();
 }
 
 class Sparkling {
