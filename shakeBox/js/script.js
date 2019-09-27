@@ -1,7 +1,6 @@
 var x = 1,
   y = 1,
   z = 1;
-var isShake = false;
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -16,23 +15,13 @@ function draw() {
 
 function drawObject() {
   push();
-  if (isShake) {
-    scale(x, y, z);
-  } else if (x > 1 && y > 1 && z > 1) {
-    scale(0.999, 0.999, 0.999);
-  }
   rotateX(-frameCount / 50);
   rotateY(frameCount / 100);
   rotateZ(frameCount / 100);
   box(200);
   pop();
-
-  isShake = false;
 }
 
 function deviceShaken() {
-  isShake = true;
-  x += accelerationX;
-  y += accelerationY;
-  z += accelerationZ;
+  stroke(random(255), random(255), random(255));
 }
