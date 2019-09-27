@@ -1,6 +1,7 @@
 var x = 1,
   y = 1,
   z = 1;
+var isShake = false;
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -15,7 +16,7 @@ function draw() {
 
 function drawObject() {
   push();
-  translate(-200, -200.0);
+  translate(0, 0, 0);
   if (isShake) {
     scale(x, y, z);
   } else if (x > 1 && y > 1 && z > 1) {
@@ -24,7 +25,7 @@ function drawObject() {
   rotateX(-frameCount / 50);
   rotateY(frameCount / 100);
   rotateZ(frameCount / 100);
-  box(100);
+  box(300);
   pop();
 
   isShake = false;
