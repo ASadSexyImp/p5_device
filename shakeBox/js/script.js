@@ -16,7 +16,6 @@ function draw() {
 
 function drawObject() {
   push();
-  translate(0, 0, 0);
   if (isShake) {
     scale(x, y, z);
   } else if (x > 1 && y > 1 && z > 1) {
@@ -25,7 +24,7 @@ function drawObject() {
   rotateX(-frameCount / 50);
   rotateY(frameCount / 100);
   rotateZ(frameCount / 100);
-  box(300);
+  box(200);
   pop();
 
   isShake = false;
@@ -33,7 +32,7 @@ function drawObject() {
 
 function deviceShaken() {
   isShake = true;
-  x += accelerationX * 0.01;
-  y += accelerationY * 0.01;
-  z += accelerationZ * 0.01;
+  x += accelerationX;
+  y += accelerationY;
+  z += accelerationZ;
 }
