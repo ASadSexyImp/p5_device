@@ -19,7 +19,7 @@ function draw() {
     fill(colors[i]);
     stroke(colors[i]);
     // 円を描く
-    ellipse(touches[i].x, touches[i].y, 24, 24);
+    ellipse(touches[i].x, touches[i].y, 20);
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
 }
