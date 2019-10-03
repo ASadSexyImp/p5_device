@@ -2,6 +2,7 @@
 
 // カラー配列変数
 var colors;
+var ptouch = [];
 
 function setup() {
   // キャンバス作成
@@ -11,19 +12,23 @@ function setup() {
   // カラー配列に入れる
   colors = [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), color(255, 255, 0), color(0, 255, 255)];
   strokeWeight(20);
+  for (var i = 0; i < 5; i++) {
+    ptouch = createVector(0, 0);
+  }
 }
 
 function draw() {
   // タッチの分だけ
   for (var i = 0; i < touches.length; i++) {
+
     // 色つける
     fill(colors[i]);
     stroke(colors[i]);
     // 円を描く
     ellipse(touches[i].x, touches[i].y, 20);
-    if (i > 0) {
-      line(touches[i].x, touches[i].y, touches[i - 1].x, touches[i - 1].y);
-    }
+    line(touches[i].x, touches[i].y, ptouche[i].x, ptouche[i].y);
+    ptouch[i].x = touches[i].x;
+    ptouch[i].y = touches[i].y;
   }
 }
 
