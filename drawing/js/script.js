@@ -26,7 +26,7 @@ function draw() {
     stroke(colors[i]);
     // 円を描く
     ellipse(touches[i].x, touches[i].y, 20);
-    line(touches[i].x, touches[i].y, pmouseX, pmouseY);
+    line(mouseX, mouseY, pmouseX, pmouseY);
     // line(touches[i].x, touches[i].y, ptouch[i].x, ptouch[i].y);
     // ptouch[i].x = touches[i].x;
     // ptouch[i].y = touches[i].y;
