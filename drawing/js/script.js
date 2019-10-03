@@ -11,7 +11,7 @@ function setup() {
   background(200);
   // カラー配列に入れる
   colors = [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), color(255, 255, 0), color(0, 255, 255)];
-  strokeWeight(20);
+  strokeWeight(40);
   for (var i = 0; i < 5; i++) {
     ptouch = createVector(0, 0);
   }
